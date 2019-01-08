@@ -1,0 +1,31 @@
+cc_library_shared {
+    name: "libboost_date_time",
+    vendor_available: true,
+    srcs: [
+        "src/gregorian/greg_month.cpp",
+        "src/gregorian/date_generators.cpp",
+        "src/gregorian/greg_weekday.cpp",
+        "src/gregorian/gregorian_types.cpp",
+        "src/gregorian/greg_names.hpp",
+        "src/posix_time/posix_time_types.cpp",
+    ],
+    export_include_dirs: ["include"],
+    header_libs: [
+        "libboost_config",
+        "libboost_predef",
+    ],
+    target: {
+        android: {
+            cflags: [
+                "-fPIC",
+                "-DPIC",
+            ],
+        },
+        not_windows: {
+            cflags: [
+                "-fPIC",
+                "-DPIC",
+            ],
+         },
+    },
+}
